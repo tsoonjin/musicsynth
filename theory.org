@@ -1,0 +1,44 @@
+* Lecture 3: DFT & Linear Predictive Coding
+** DFT (Discrete Fourier Transform)
+*** [[https://dsp.stackexchange.com/questions/536/what-is-meant-by-a-systems-impulse-response-and-frequency-response][Characterize a LTI(Linear Time Invariant) system with:]]
+**** Impulse response
+**** Frequency response
+*** Difference equation to compute output of a sample
+**** Combination of past input samples and output samples
+**** FIR + IIR filters
+** Source-filter model
+*** Combination of source and filter to generate speech assume independence of source and filter
+*** Vocal tract shapes act as filter to produce different sound
+** LPC (Linear Predictive Coding) FIR Filter
+*** Output samples calculated from linear combination of filter coefficients and previous samples
+*** Levinson-Durbin algorithm to find coefficients that minimize squared prediction error
+*** Using FIR filter for prediction error calculation
+*** *Aim: Generate residual* 
+** LP (Linear Prediction) IIR Filter
+*** represents spectral model of input samples
+*** *Aim: Recover input signal given residual from FIR filter*
+** Full-system
+*** [[file:data/lpc.png]]
+*** We can get excitation if the coefficients are the same which cancel each other out
+* UNSW Speech & Audio Processing 1
+** Voiced speech (vocal chord vibrates)
+*** Discrete puffs in time domain. Vibrates at fundamental frequency
+** Unvoiced sound (vocal chords held open)
+*** High frequency component sound
+** Format frequencies (resonant in the vocal tract)
+*** [[file:data/speech_model.png]]
+*** Voiced sound: enhances low frequency component vice versa for unvoiced
+*** *Small frame extracted cause waveform appear stationary then*
+** Model of Speech Production
+*** Excitation source: dirac delta function (impulse train) taking the z-transform
+*** [[file:data/excitation_equation.png]]
+*** [[https://www.youtube.com/watch?v=B4IyRw1zvvA][What is z-transform ?]] 
+**** Identifies presence of exponentially increasing or decreasing oscillation in signal
+**** Used to determine system's frequency response
+**** Finding correlation between signal, x(n) and z^-n
+*** Glottal model, G(z) typically a low pass filter to produce the shape instead of sharp peaks
+*** Vocal tract model
+**** All-pole model = constant numerator / polynomial denominator. 
+**** [[https://sound.stackexchange.com/questions/24637/what-does-poles-mean-in-relation-to-a-filter][What does pole means ?]]
+**** [[https://www.youtube.com/watch?v=Em5TuH4TVr4][What is pole and zero ?]] 
+*** [[file:data/speechproduction.png]]
