@@ -1,0 +1,21 @@
+* Do Mobile Phones Dream Of Electronic Orchestras ?
+** Original Repertoire
+*** Mapping accelerometer: up-down -> spectral richness and (left-right) -> fundamental frequency for FM synthesis
+*** Preprogrammed modulation ratios and pitches for selection
+*** Circle map effect
+*** DJ control loopback rate by tilting and changes timbre based on accelerometer
+*** Using it as a diffuser in space
+
+* Ocarina
+
+** Physical interaction design process
+
+*** How many points multi touch allowed ?
+
+*** Uses accelerometer for vibrato (left-right), timbre(front-back)
+
+*** Using ChucK to track amplitude of incoming signal
+
+** Sound synthesis
+
+*** ChucK program consists of amplitude tracker and articulator
