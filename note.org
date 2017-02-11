@@ -19,3 +19,17 @@
 ** Sound synthesis
 
 *** ChucK program consists of amplitude tracker and articulator
+
+* Toolkits
+** STK (Synthesis Toolkit)
+* Feature Analysis
+** RMS of a window of samples or Highest sample as -> *Amplitude* 
+** Number of zero crossings -> *Pitch*
+* Ideas
+** MOGAT: Auditory training for pitch perception, pitch production
+* Mapping motion to timbre: FM Synthesis
+** [[file:data/mapmotiont_timbre.png]]
+** Mapping:
+*** Pitch recognition = carrier frequency
+*** elevation = modulation ratio
+*** rotation = modulation index
