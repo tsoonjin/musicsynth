@@ -27,9 +27,98 @@
 ** Number of zero crossings -> *Pitch*
 * Ideas
 ** MOGAT: Auditory training for pitch perception, pitch production
+** Gesture-based Interactive Re-mixeable Dance Floor (GIRD) Music Tech Fest
+** ChoirMob, Vuzik
+** Granular Synthesis
+** UrMus live coding
+** SuperCollider
+** Overtone
 * Mapping motion to timbre: FM Synthesis
 ** [[file:data/mapmotiont_timbre.png]]
 ** Mapping:
 *** Pitch recognition = carrier frequency
 *** elevation = modulation ratio
 *** rotation = modulation index
+* Interactive Virtual Percussion
+** Editing mode allows for creation of virtual instruments from different materials
+** Sound synthesis: Physical waveguide synthesis (Cook 2007)
+* The Interactive Music Producer
+** Music & Sound Production
+*** Ableton Live, Max for Live, PureData, Max
+*** Composing interactive music (Winkler 1998)
+** Interactive Technologies
+*** user experience and they way music is perceived 
+*** Music and Human-Computer Interaction (Holland 2013)
+** Data Mapping and Manipulation
+*** Interactive Music 3.0(Quay 2012), Making Motion Musical (Bevilacqua), Drummond 2009
+*** Wekinator, Gesture Follower
+*** Dynamic Music Objects (Thalmann 2016) 
+* AuRal: A Mobile Interactive System for Geo-Locative Audio Synthesis
+** Client App
+*** Uses Android port of SuperCollider
+*** Uses spatial data to synthesize sound
+* Game Design for Expressive Mobile Music
+** Magic Piano: simple, hardcoded music note and pitch
+** Magic Fiddle
+** Ocarina
+** Leaf Trombone
+* Grab & Play: Creative Mapping
+** Based on Wekinator with additional features:
+*** Interface with any synthesizer that accepts OSC messages
+*** [[http://github.com/hugoscurto/GrabAndPlayWeki][Source Code]] 
+* Sound Synthesis: History & Theory
+** Oscillator = generates waveforms at different pitch
+*** Triangle
+*** Saw
+*** Square
+*** Pulse
+** Filter = Timbre
+*** Subtractive synthesis removes some frequencies or emphasis some
+** Amplifer = Amplitude
+*** Varying amplitude modify characteristics. marimba and accordion
+** Low Frequency Oscillator (LFO)
+*** Low sub-audible frequency range where its output use as source of modulation
+** Envelope generator (ASDR)
+*** modulation source to control synthesizer parameter
+*** Attack time, Decay Time,  Sustain Level, Release Time
+*** Create filter sweep and create volume shape in amplifier to mimic certain instruments
+* Electronic Music Synthesis & Audio Effects Processing
+** Music notes, pitch and octave
+*** Characterized by fundamental frequency and its ratios = overtones
+*** [[file:data/note_frequencies.png]]
+
+** Timbre & Physical Modelling
+
+*** Tone quality. Charateristic quality of a sound often used to discern instruments
+
+*** Frequency Spectrum (relative energy distribution of partials) affect timbre
+
+*** Variation in amplitude such as attack and fade time also affet timbre
+
+** Additive synthesis
+
+*** using sinusoids of different frequency and amplitude ratio
+
+** FM Synthesis
+
+** Audio Effects
+
+*** Echo (repeat signal after a delay with reduced gain)
+
+*** Reverb (persistence of sound after being produced due to reflection)
+
+*** Flanging 
+
+*** Chorus
+
+*** Bass (tone in low-pitched range)
+
+*** Treble (high frequency)
+
+*** WahWah Effect (altering resonance of musical notes)
+
+*** Tremolo (variation of amplitude)
+
+*** Fade In Fade Out
+
+* 
