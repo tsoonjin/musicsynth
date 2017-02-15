@@ -33,6 +33,26 @@
 ** UrMus live coding
 ** SuperCollider
 ** Overtone
+** OpenSound Control (OSC)
+** Magnetic Interation
+** Sonic Tennis. Play tennis with spatial audio feedback
+** Using digital compass
+** Sound bounce
+** MoMu API
+** PureData Open Source of Max
+** ChucK
+** [[https://musictech.mit.edu/projects/spring2015][MIT Spring 2015]]
+** [[https://musictech.mit.edu/projects/spring2016][MIT Spring 2016]]
+** [[https://musictech.mit.edu/projects/fall2016][Fall 2016]]
+** [[http://ccrma.stanford.edu/planetccrma/software/soundapps.html][Planet CCRMA]]
+** DJ Controller
+** Dynamic Performance Augmentation: Vocal Harmonizer, Arpeggiator, Chord Changer, Harmonic Synthesizer
+** Magic Baton control tempo, EQ level based on hand movements with particles effect
+** Snakio: Eat musical notes with powerup which changes music played
+** Explore Spotify playlist: Can change attributes for song recommendation
+** Guided chord progression. Uses the library "Synth"
+** Using hand gestures to create different effects to be added during live performance
+** Record small segment of audio to be used later for synthesis
 * Mapping motion to timbre: FM Synthesis
 ** [[file:data/mapmotiont_timbre.png]]
 ** Mapping:
@@ -121,4 +141,69 @@
 
 *** Fade In Fade Out
 
-* 
+* Synthesis Techniques
+
+** Additive Synthesis
+
+** Source-filter
+
+*** [[file:data/source_filter.png]]
+
+
+*** Amplitude Modulation
+*** Frequency Modulation
+
+* Gesture-Sound Mapping by Demonstration in Interactive Music Systems
+
+** Hierarchical Approach to Mapping
+
+*** Template-based learning with single example
+
+** Multimodal modelling of gesture-sound mapping
+
+*** multimodal HMM modelling dependencies between gesture and sound
+
+* Machine Learning in Automatic Chord Generation
+
+** Related work
+
+*** Simon HMM and 60 chords for interactive product
+
+*** Paiement uses multilevel graphical model to generate chord progression
+
+*** Legaspi uses genetic algorithm
+
+** Methodology
+
+*** Random Forest
+
+*** HMM
+
+** Aim
+
+*** Given an a music piece with several measures. Predict chord for each measure
+
+* MUSICAL AUDIO SYNTHESIS USING AUTOENCODING NEURAL NETS
+[[https://github.com/woodshop/deepAutoController][Source Code]]. Learn high-level features from low-level features using Autoencoder
+
+* Random ideas
+
+** Health
+
+** Education
+
+** Live interaction during concert
+
+** Game: Multiplayer or Single player
+
+** Karaoke-like
+
+** Natural sound: animals exploration
+
+** Storytelling
+
+** Generate new way of playing music
+
+** AudioVisual
+
+** Voice as instrument
