@@ -1,0 +1,4 @@
+* Produce a software musical instrument *Android* app using *motion* to modulate and modify the sound it produces
+** TODO Movement detection (minimum *3* gestures)
+** TODO Sound sythesis (MIDI | pre-recorded | synthesized)
+** TODO Gesture Mapping 

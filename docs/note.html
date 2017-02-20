@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(batumon)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="author">batumon</h2><p class="date">Created: 2017-02-20 Mon 11:08</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org4219c9f">1. Do Mobile Phones Dream Of Electronic Orchestras ?</a>
+<ul>
+<li><a href="#/slide-org027daac">1.1. Original Repertoire</a>
+<ul>
+<li><a href="#/slide-orgb6caee2">1.1.1. Mapping accelerometer: up-down -&gt; spectral richness and (left-right) -&gt; fundamental frequency for FM synthesis</a></li>
+<li><a href="#/slide-org7263649">1.1.2. Preprogrammed modulation ratios and pitches for selection</a></li>
+<li><a href="#/slide-orge3c9642">1.1.3. Circle map effect</a></li>
+<li><a href="#/slide-orge57e43e">1.1.4. DJ control loopback rate by tilting and changes timbre based on accelerometer</a></li>
+<li><a href="#/slide-org7ebd816">1.1.5. Using it as a diffuser in space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org466a2f3">2. Ocarina</a>
+<ul>
+<li><a href="#/slide-orge7edd24">2.1. Physical interaction design process</a>
+<ul>
+<li><a href="#/slide-org6b1436b">2.1.1. How many points multi touch allowed ?</a></li>
+<li><a href="#/slide-org7433c89">2.1.2. Uses accelerometer for vibrato (left-right), timbre(front-back)</a></li>
+<li><a href="#/slide-orgaa4891a">2.1.3. Using ChucK to track amplitude of incoming signal</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgb1d32a9">2.2. Sound synthesis</a>
+<ul>
+<li><a href="#/slide-orgcb440d6">2.2.1. ChucK program consists of amplitude tracker and articulator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org7593153">3. Toolkits</a>
+<ul>
+<li><a href="#/slide-orga869c05">3.1. STK (Synthesis Toolkit)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org11c0113">4. Feature Analysis</a>
+<ul>
+<li><a href="#/slide-org516a79a">4.1. RMS of a window of samples or Highest sample as -&gt; <b>Amplitude</b></a></li>
+<li><a href="#/slide-org329d4e3">4.2. Number of zero crossings -&gt; <b>Pitch</b></a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgf20d905">5. Ideas</a>
+<ul>
+<li><a href="#/slide-org1a07440">5.1. MOGAT: Auditory training for pitch perception, pitch production</a></li>
+<li><a href="#/slide-org53ee4e4">5.2. Gesture-based Interactive Re-mixeable Dance Floor (GIRD) Music Tech Fest</a></li>
+<li><a href="#/slide-orgffad00f">5.3. ChoirMob, Vuzik</a></li>
+<li><a href="#/slide-orge48e954">5.4. Granular Synthesis</a></li>
+<li><a href="#/slide-org74367f9">5.5. UrMus live coding</a></li>
+<li><a href="#/slide-orgffbda94">5.6. SuperCollider</a></li>
+<li><a href="#/slide-org85976f2">5.7. Overtone</a></li>
+<li><a href="#/slide-orgea0714c">5.8. OpenSound Control (OSC)</a></li>
+<li><a href="#/slide-org4794988">5.9. Magnetic Interation</a></li>
+<li><a href="#/slide-org20be8ff">5.10. Sonic Tennis. Play tennis with spatial audio feedback</a></li>
+<li><a href="#/slide-org1af12a4">5.11. Using digital compass</a></li>
+<li><a href="#/slide-org0084742">5.12. Sound bounce</a></li>
+<li><a href="#/slide-org0d17f90">5.13. MoMu API</a></li>
+<li><a href="#/slide-org8532230">5.14. PureData Open Source of Max</a></li>
+<li><a href="#/slide-orgc30796d">5.15. ChucK</a></li>
+<li><a href="#/slide-orgd702595">5.16. MIT Spring 2015</a></li>
+<li><a href="#/slide-org125f80c">5.17. MIT Spring 2016</a></li>
+<li><a href="#/slide-orgd3eae46">5.18. Fall 2016</a></li>
+<li><a href="#/slide-orgd2ce2d4">5.19. Planet CCRMA</a></li>
+<li><a href="#/slide-org8611d90">5.20. DJ Controller</a></li>
+<li><a href="#/slide-org0450c7b">5.21. Dynamic Performance Augmentation: Vocal Harmonizer, Arpeggiator, Chord Changer, Harmonic Synthesizer</a></li>
+<li><a href="#/slide-org91b6df5">5.22. Magic Baton control tempo, EQ level based on hand movements with particles effect</a></li>
+<li><a href="#/slide-org8163894">5.23. Snakio: Eat musical notes with powerup which changes music played</a></li>
+<li><a href="#/slide-org4bba1be">5.24. Explore Spotify playlist: Can change attributes for song recommendation</a></li>
+<li><a href="#/slide-orgac5bdbb">5.25. Guided chord progression. Uses the library "Synth"</a></li>
+<li><a href="#/slide-org4437e3e">5.26. Using hand gestures to create different effects to be added during live performance</a></li>
+<li><a href="#/slide-org652bfa7">5.27. Record small segment of audio to be used later for synthesis</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgb508fee">6. Mapping motion to timbre: FM Synthesis</a>
+<ul>
+<li><a href="#/slide-org3bd073e">6.1. </a></li>
+<li><a href="#/slide-orgc761a3e">6.2. Mapping:</a>
+<ul>
+<li><a href="#/slide-orge2deae4">6.2.1. Pitch recognition = carrier frequency</a></li>
+<li><a href="#/slide-org8521a7d">6.2.2. elevation = modulation ratio</a></li>
+<li><a href="#/slide-orgb6d9e46">6.2.3. rotation = modulation index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-orgc6be9d6">7. Interactive Virtual Percussion</a>
+<ul>
+<li><a href="#/slide-orgfb85119">7.1. Editing mode allows for creation of virtual instruments from different materials</a></li>
+<li><a href="#/slide-org79af614">7.2. Sound synthesis: Physical waveguide synthesis (Cook 2007)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org0c14004">8. The Interactive Music Producer</a>
+<ul>
+<li><a href="#/slide-org8a415e5">8.1. Music &amp; Sound Production</a>
+<ul>
+<li><a href="#/slide-org25bff14">8.1.1. Ableton Live, Max for Live, PureData, Max</a></li>
+<li><a href="#/slide-org97c5610">8.1.2. Composing interactive music (Winkler 1998)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org03278c8">8.2. Interactive Technologies</a>
+<ul>
+<li><a href="#/slide-orgc967c96">8.2.1. user experience and they way music is perceived</a></li>
+<li><a href="#/slide-orgd1ebd49">8.2.2. Music and Human-Computer Interaction (Holland 2013)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org0d52c1c">8.3. Data Mapping and Manipulation</a>
+<ul>
+<li><a href="#/slide-org0ca7c47">8.3.1. Interactive Music 3.0(Quay 2012), Making Motion Musical (Bevilacqua), Drummond 2009</a></li>
+<li><a href="#/slide-org3092ce1">8.3.2. Wekinator, Gesture Follower</a></li>
+<li><a href="#/slide-org7140ff6">8.3.3. Dynamic Music Objects (Thalmann 2016)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org0912915">9. AuRal: A Mobile Interactive System for Geo-Locative Audio Synthesis</a>
+<ul>
+<li><a href="#/slide-orgbc156e8">9.1. Client App</a>
+<ul>
+<li><a href="#/slide-orgcae9fab">9.1.1. Uses Android port of SuperCollider</a></li>
+<li><a href="#/slide-orgc4e5b77">9.1.2. Uses spatial data to synthesize sound</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org7163f5e">10. Game Design for Expressive Mobile Music</a>
+<ul>
+<li><a href="#/slide-org2670140">10.1. Magic Piano: simple, hardcoded music note and pitch</a></li>
+<li><a href="#/slide-orga81eb01">10.2. Magic Fiddle</a></li>
+<li><a href="#/slide-org8987386">10.3. Ocarina</a></li>
+<li><a href="#/slide-orgaa6082e">10.4. Leaf Trombone</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org45d3b5a">11. Grab &amp; Play: Creative Mapping</a>
+<ul>
+<li><a href="#/slide-orgd4119ec">11.1. Based on Wekinator with additional features:</a>
+<ul>
+<li><a href="#/slide-orge33a84c">11.1.1. Interface with any synthesizer that accepts OSC messages</a></li>
+<li><a href="#/slide-orga9ea883">11.1.2. Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org4660ca3">12. Sound Synthesis: History &amp; Theory</a>
+<ul>
+<li><a href="#/slide-org1486948">12.1. Oscillator = generates waveforms at different pitch</a>
+<ul>
+<li><a href="#/slide-org3ba5796">12.1.1. Triangle</a></li>
+<li><a href="#/slide-org79c9d12">12.1.2. Saw</a></li>
+<li><a href="#/slide-org6653968">12.1.3. Square</a></li>
+<li><a href="#/slide-org6675b2d">12.1.4. Pulse</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgd85ff2a">12.2. Filter = Timbre</a>
+<ul>
+<li><a href="#/slide-org631f932">12.2.1. Subtractive synthesis removes some frequencies or emphasis some</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org7370180">12.3. Amplifer = Amplitude</a>
+<ul>
+<li><a href="#/slide-org2a0dacb">12.3.1. Varying amplitude modify characteristics. marimba and accordion</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org301a041">12.4. Low Frequency Oscillator (LFO)</a>
+<ul>
+<li><a href="#/slide-orgb3a3e17">12.4.1. Low sub-audible frequency range where its output use as source of modulation</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org5991fca">12.5. Envelope generator (ASDR)</a>
+<ul>
+<li><a href="#/slide-org3ad7c65">12.5.1. modulation source to control synthesizer parameter</a></li>
+<li><a href="#/slide-org39c30df">12.5.2. Attack time, Decay Time,  Sustain Level, Release Time</a></li>
+<li><a href="#/slide-org36e1dfa">12.5.3. Create filter sweep and create volume shape in amplifier to mimic certain instruments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org41a0919">13. Electronic Music Synthesis &amp; Audio Effects Processing</a>
+<ul>
+<li><a href="#/slide-org69b8b76">13.1. Music notes, pitch and octave</a>
+<ul>
+<li><a href="#/slide-org8295aef">13.1.1. Characterized by fundamental frequency and its ratios = overtones</a></li>
+<li><a href="#/slide-org7037161">13.1.2. </a></li>
+</ul>
+</li>
+<li><a href="#/slide-org3d14cfe">13.2. Timbre &amp; Physical Modelling</a>
+<ul>
+<li><a href="#/slide-org0317331">13.2.1. Tone quality. Charateristic quality of a sound often used to discern instruments</a></li>
+<li><a href="#/slide-orge145bb0">13.2.2. Frequency Spectrum (relative energy distribution of partials) affect timbre</a></li>
+<li><a href="#/slide-orgab8c0f9">13.2.3. Variation in amplitude such as attack and fade time also affet timbre</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org35e00bc">13.3. Additive synthesis</a>
+<ul>
+<li><a href="#/slide-orgc84622e">13.3.1. using sinusoids of different frequency and amplitude ratio</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgfe3cf24">13.4. FM Synthesis</a></li>
+<li><a href="#/slide-orgf74bb25">13.5. Audio Effects</a>
+<ul>
+<li><a href="#/slide-orgc6a0f92">13.5.1. Echo (repeat signal after a delay with reduced gain)</a></li>
+<li><a href="#/slide-orgee2394c">13.5.2. Reverb (persistence of sound after being produced due to reflection)</a></li>
+<li><a href="#/slide-org3704434">13.5.3. Flanging</a></li>
+<li><a href="#/slide-org39574a0">13.5.4. Chorus</a></li>
+<li><a href="#/slide-orgf893f1f">13.5.5. Bass (tone in low-pitched range)</a></li>
+<li><a href="#/slide-orgbf48349">13.5.6. Treble (high frequency)</a></li>
+<li><a href="#/slide-org8c4a1b0">13.5.7. WahWah Effect (altering resonance of musical notes)</a></li>
+<li><a href="#/slide-org6462429">13.5.8. Tremolo (variation of amplitude)</a></li>
+<li><a href="#/slide-org3410b7a">13.5.9. Fade In Fade Out</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-orgf256d57">14. Synthesis Techniques</a>
+<ul>
+<li><a href="#/slide-org9f424b3">14.1. Additive Synthesis</a></li>
+<li><a href="#/slide-org13b63ef">14.2. Source-filter</a>
+<ul>
+<li><a href="#/slide-org18a80d0">14.2.1. </a></li>
+<li><a href="#/slide-org08f916f">14.2.2. Amplitude Modulation</a></li>
+<li><a href="#/slide-orgbd2c748">14.2.3. Frequency Modulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-orgdc5fe67">15. Gesture-Sound Mapping by Demonstration in Interactive Music Systems</a>
+<ul>
+<li><a href="#/slide-org4cdc626">15.1. Hierarchical Approach to Mapping</a>
+<ul>
+<li><a href="#/slide-org2927a6c">15.1.1. Template-based learning with single example</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org34f9a85">15.2. Multimodal modelling of gesture-sound mapping</a>
+<ul>
+<li><a href="#/slide-org2ab35b5">15.2.1. multimodal HMM modelling dependencies between gesture and sound</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org31ee662">16. Machine Learning in Automatic Chord Generation</a>
+<ul>
+<li><a href="#/slide-org6714682">16.1. Related work</a>
+<ul>
+<li><a href="#/slide-orge5f85be">16.1.1. Simon HMM and 60 chords for interactive product</a></li>
+<li><a href="#/slide-org5fac295">16.1.2. Paiement uses multilevel graphical model to generate chord progression</a></li>
+<li><a href="#/slide-org16bf3c1">16.1.3. Legaspi uses genetic algorithm</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgc846a87">16.2. Methodology</a>
+<ul>
+<li><a href="#/slide-org328b45c">16.2.1. Random Forest</a></li>
+<li><a href="#/slide-orga34e123">16.2.2. HMM</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org0ca8cdb">16.3. Aim</a>
+<ul>
+<li><a href="#/slide-org55f7401">16.3.1. Given an a music piece with several measures. Predict chord for each measure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org3c74aae">17. MUSICAL AUDIO SYNTHESIS USING AUTOENCODING NEURAL NETS</a></li>
+<li><a href="#/slide-org7cf087c">18. Random ideas</a>
+<ul>
+<li><a href="#/slide-orga65ae1e">18.1. Health</a></li>
+<li><a href="#/slide-orgcce57cf">18.2. Education</a></li>
+<li><a href="#/slide-org16927d9">18.3. Live interaction during concert</a></li>
+<li><a href="#/slide-org3288afc">18.4. Game: Multiplayer or Single player</a></li>
+<li><a href="#/slide-orga96bc27">18.5. Karaoke-like</a></li>
+<li><a href="#/slide-org8ab9311">18.6. Natural sound: animals exploration</a></li>
+<li><a href="#/slide-orgc7c88f6">18.7. Storytelling</a></li>
+<li><a href="#/slide-orge155075">18.8. Generate new way of playing music</a></li>
+<li><a href="#/slide-org55f55a9">18.9. AudioVisual</a></li>
+<li><a href="#/slide-org9597ac0">18.10. Voice as instrument</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org4219c9f">
+<h2 id="org4219c9f"><span class="section-number-2">1</span> Do Mobile Phones Dream Of Electronic Orchestras ?</h2>
+<div class="outline-text-2" id="text-1">
+</div></section>
+<section id="slide-org027daac">
+<h3 id="org027daac"><span class="section-number-3">1.1</span> Original Repertoire</h3>
+<div class="outline-text-3" id="text-1-1">
+</div></section>
+<section id="slide-orgb6caee2">
+<h4 id="orgb6caee2"><span class="section-number-4">1.1.1</span> Mapping accelerometer: up-down -&gt; spectral richness and (left-right) -&gt; fundamental frequency for FM synthesis</h4>
+</section>
+<section id="slide-org7263649">
+<h4 id="org7263649"><span class="section-number-4">1.1.2</span> Preprogrammed modulation ratios and pitches for selection</h4>
+</section>
+<section id="slide-orge3c9642">
+<h4 id="orge3c9642"><span class="section-number-4">1.1.3</span> Circle map effect</h4>
+</section>
+<section id="slide-orge57e43e">
+<h4 id="orge57e43e"><span class="section-number-4">1.1.4</span> DJ control loopback rate by tilting and changes timbre based on accelerometer</h4>
+</section>
+<section id="slide-org7ebd816">
+<h4 id="org7ebd816"><span class="section-number-4">1.1.5</span> Using it as a diffuser in space</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org466a2f3">
+<h2 id="org466a2f3"><span class="section-number-2">2</span> Ocarina</h2>
+<div class="outline-text-2" id="text-2">
+</div></section>
+<section id="slide-orge7edd24">
+<h3 id="orge7edd24"><span class="section-number-3">2.1</span> Physical interaction design process</h3>
+<div class="outline-text-3" id="text-2-1">
+</div></section>
+<section id="slide-org6b1436b">
+<h4 id="org6b1436b"><span class="section-number-4">2.1.1</span> How many points multi touch allowed ?</h4>
+
+</section>
+<section id="slide-org7433c89">
+<h4 id="org7433c89"><span class="section-number-4">2.1.2</span> Uses accelerometer for vibrato (left-right), timbre(front-back)</h4>
+
+</section>
+<section id="slide-orgaa4891a">
+<h4 id="orgaa4891a"><span class="section-number-4">2.1.3</span> Using ChucK to track amplitude of incoming signal</h4>
+
+</section>
+<section id="slide-orgb1d32a9">
+<h3 id="orgb1d32a9"><span class="section-number-3">2.2</span> Sound synthesis</h3>
+<div class="outline-text-3" id="text-2-2">
+</div></section>
+<section id="slide-orgcb440d6">
+<h4 id="orgcb440d6"><span class="section-number-4">2.2.1</span> ChucK program consists of amplitude tracker and articulator</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org7593153">
+<h2 id="org7593153"><span class="section-number-2">3</span> Toolkits</h2>
+<div class="outline-text-2" id="text-3">
+</div></section>
+<section id="slide-orga869c05">
+<h3 id="orga869c05"><span class="section-number-3">3.1</span> STK (Synthesis Toolkit)</h3>
+</section>
+</section>
+<section>
+<section id="slide-org11c0113">
+<h2 id="org11c0113"><span class="section-number-2">4</span> Feature Analysis</h2>
+<div class="outline-text-2" id="text-4">
+</div></section>
+<section id="slide-org516a79a">
+<h3 id="org516a79a"><span class="section-number-3">4.1</span> RMS of a window of samples or Highest sample as -&gt; <b>Amplitude</b></h3>
+</section>
+<section id="slide-org329d4e3">
+<h3 id="org329d4e3"><span class="section-number-3">4.2</span> Number of zero crossings -&gt; <b>Pitch</b></h3>
+</section>
+</section>
+<section>
+<section id="slide-orgf20d905">
+<h2 id="orgf20d905"><span class="section-number-2">5</span> Ideas</h2>
+<div class="outline-text-2" id="text-5">
+</div></section>
+<section id="slide-org1a07440">
+<h3 id="org1a07440"><span class="section-number-3">5.1</span> MOGAT: Auditory training for pitch perception, pitch production</h3>
+</section>
+<section id="slide-org53ee4e4">
+<h3 id="org53ee4e4"><span class="section-number-3">5.2</span> Gesture-based Interactive Re-mixeable Dance Floor (GIRD) Music Tech Fest</h3>
+</section>
+<section id="slide-orgffad00f">
+<h3 id="orgffad00f"><span class="section-number-3">5.3</span> ChoirMob, Vuzik</h3>
+</section>
+<section id="slide-orge48e954">
+<h3 id="orge48e954"><span class="section-number-3">5.4</span> Granular Synthesis</h3>
+</section>
+<section id="slide-org74367f9">
+<h3 id="org74367f9"><span class="section-number-3">5.5</span> UrMus live coding</h3>
+</section>
+<section id="slide-orgffbda94">
+<h3 id="orgffbda94"><span class="section-number-3">5.6</span> SuperCollider</h3>
+</section>
+<section id="slide-org85976f2">
+<h3 id="org85976f2"><span class="section-number-3">5.7</span> Overtone</h3>
+</section>
+<section id="slide-orgea0714c">
+<h3 id="orgea0714c"><span class="section-number-3">5.8</span> OpenSound Control (OSC)</h3>
+</section>
+<section id="slide-org4794988">
+<h3 id="org4794988"><span class="section-number-3">5.9</span> Magnetic Interation</h3>
+</section>
+<section id="slide-org20be8ff">
+<h3 id="org20be8ff"><span class="section-number-3">5.10</span> Sonic Tennis. Play tennis with spatial audio feedback</h3>
+</section>
+<section id="slide-org1af12a4">
+<h3 id="org1af12a4"><span class="section-number-3">5.11</span> Using digital compass</h3>
+</section>
+<section id="slide-org0084742">
+<h3 id="org0084742"><span class="section-number-3">5.12</span> Sound bounce</h3>
+</section>
+<section id="slide-org0d17f90">
+<h3 id="org0d17f90"><span class="section-number-3">5.13</span> MoMu API</h3>
+</section>
+<section id="slide-org8532230">
+<h3 id="org8532230"><span class="section-number-3">5.14</span> PureData Open Source of Max</h3>
+</section>
+<section id="slide-orgc30796d">
+<h3 id="orgc30796d"><span class="section-number-3">5.15</span> ChucK</h3>
+</section>
+<section id="slide-orgd702595">
+<h3 id="orgd702595"><span class="section-number-3">5.16</span> <a href="https://musictech.mit.edu/projects/spring2015">MIT Spring 2015</a></h3>
+</section>
+<section id="slide-org125f80c">
+<h3 id="org125f80c"><span class="section-number-3">5.17</span> <a href="https://musictech.mit.edu/projects/spring2016">MIT Spring 2016</a></h3>
+</section>
+<section id="slide-orgd3eae46">
+<h3 id="orgd3eae46"><span class="section-number-3">5.18</span> <a href="https://musictech.mit.edu/projects/fall2016">Fall 2016</a></h3>
+</section>
+<section id="slide-orgd2ce2d4">
+<h3 id="orgd2ce2d4"><span class="section-number-3">5.19</span> <a href="http://ccrma.stanford.edu/planetccrma/software/soundapps.html">Planet CCRMA</a></h3>
+</section>
+<section id="slide-org8611d90">
+<h3 id="org8611d90"><span class="section-number-3">5.20</span> DJ Controller</h3>
+</section>
+<section id="slide-org0450c7b">
+<h3 id="org0450c7b"><span class="section-number-3">5.21</span> Dynamic Performance Augmentation: Vocal Harmonizer, Arpeggiator, Chord Changer, Harmonic Synthesizer</h3>
+</section>
+<section id="slide-org91b6df5">
+<h3 id="org91b6df5"><span class="section-number-3">5.22</span> Magic Baton control tempo, EQ level based on hand movements with particles effect</h3>
+</section>
+<section id="slide-org8163894">
+<h3 id="org8163894"><span class="section-number-3">5.23</span> Snakio: Eat musical notes with powerup which changes music played</h3>
+</section>
+<section id="slide-org4bba1be">
+<h3 id="org4bba1be"><span class="section-number-3">5.24</span> Explore Spotify playlist: Can change attributes for song recommendation</h3>
+</section>
+<section id="slide-orgac5bdbb">
+<h3 id="orgac5bdbb"><span class="section-number-3">5.25</span> Guided chord progression. Uses the library "Synth"</h3>
+</section>
+<section id="slide-org4437e3e">
+<h3 id="org4437e3e"><span class="section-number-3">5.26</span> Using hand gestures to create different effects to be added during live performance</h3>
+</section>
+<section id="slide-org652bfa7">
+<h3 id="org652bfa7"><span class="section-number-3">5.27</span> Record small segment of audio to be used later for synthesis</h3>
+</section>
+</section>
+<section>
+<section id="slide-orgb508fee">
+<h2 id="orgb508fee"><span class="section-number-2">6</span> Mapping motion to timbre: FM Synthesis</h2>
+<div class="outline-text-2" id="text-6">
+</div></section>
+<section id="slide-org3bd073e">
+<h3 id="org3bd073e"><span class="section-number-3">6.1</span> <img src="data/mapmotiont_timbre.png" alt="mapmotiont_timbre.png" /></h3>
+</section>
+<section id="slide-orgc761a3e">
+<h3 id="orgc761a3e"><span class="section-number-3">6.2</span> Mapping:</h3>
+<div class="outline-text-3" id="text-6-2">
+</div></section>
+<section id="slide-orge2deae4">
+<h4 id="orge2deae4"><span class="section-number-4">6.2.1</span> Pitch recognition = carrier frequency</h4>
+</section>
+<section id="slide-org8521a7d">
+<h4 id="org8521a7d"><span class="section-number-4">6.2.2</span> elevation = modulation ratio</h4>
+</section>
+<section id="slide-orgb6d9e46">
+<h4 id="orgb6d9e46"><span class="section-number-4">6.2.3</span> rotation = modulation index</h4>
+</section>
+</section>
+<section>
+<section id="slide-orgc6be9d6">
+<h2 id="orgc6be9d6"><span class="section-number-2">7</span> Interactive Virtual Percussion</h2>
+<div class="outline-text-2" id="text-7">
+</div></section>
+<section id="slide-orgfb85119">
+<h3 id="orgfb85119"><span class="section-number-3">7.1</span> Editing mode allows for creation of virtual instruments from different materials</h3>
+</section>
+<section id="slide-org79af614">
+<h3 id="org79af614"><span class="section-number-3">7.2</span> Sound synthesis: Physical waveguide synthesis (Cook 2007)</h3>
+</section>
+</section>
+<section>
+<section id="slide-org0c14004">
+<h2 id="org0c14004"><span class="section-number-2">8</span> The Interactive Music Producer</h2>
+<div class="outline-text-2" id="text-8">
+</div></section>
+<section id="slide-org8a415e5">
+<h3 id="org8a415e5"><span class="section-number-3">8.1</span> Music &amp; Sound Production</h3>
+<div class="outline-text-3" id="text-8-1">
+</div></section>
+<section id="slide-org25bff14">
+<h4 id="org25bff14"><span class="section-number-4">8.1.1</span> Ableton Live, Max for Live, PureData, Max</h4>
+</section>
+<section id="slide-org97c5610">
+<h4 id="org97c5610"><span class="section-number-4">8.1.2</span> Composing interactive music (Winkler 1998)</h4>
+</section>
+<section id="slide-org03278c8">
+<h3 id="org03278c8"><span class="section-number-3">8.2</span> Interactive Technologies</h3>
+<div class="outline-text-3" id="text-8-2">
+</div></section>
+<section id="slide-orgc967c96">
+<h4 id="orgc967c96"><span class="section-number-4">8.2.1</span> user experience and they way music is perceived</h4>
+</section>
+<section id="slide-orgd1ebd49">
+<h4 id="orgd1ebd49"><span class="section-number-4">8.2.2</span> Music and Human-Computer Interaction (Holland 2013)</h4>
+</section>
+<section id="slide-org0d52c1c">
+<h3 id="org0d52c1c"><span class="section-number-3">8.3</span> Data Mapping and Manipulation</h3>
+<div class="outline-text-3" id="text-8-3">
+</div></section>
+<section id="slide-org0ca7c47">
+<h4 id="org0ca7c47"><span class="section-number-4">8.3.1</span> Interactive Music 3.0(Quay 2012), Making Motion Musical (Bevilacqua), Drummond 2009</h4>
+</section>
+<section id="slide-org3092ce1">
+<h4 id="org3092ce1"><span class="section-number-4">8.3.2</span> Wekinator, Gesture Follower</h4>
+</section>
+<section id="slide-org7140ff6">
+<h4 id="org7140ff6"><span class="section-number-4">8.3.3</span> Dynamic Music Objects (Thalmann 2016)</h4>
+</section>
+</section>
+<section>
+<section id="slide-org0912915">
+<h2 id="org0912915"><span class="section-number-2">9</span> AuRal: A Mobile Interactive System for Geo-Locative Audio Synthesis</h2>
+<div class="outline-text-2" id="text-9">
+</div></section>
+<section id="slide-orgbc156e8">
+<h3 id="orgbc156e8"><span class="section-number-3">9.1</span> Client App</h3>
+<div class="outline-text-3" id="text-9-1">
+</div></section>
+<section id="slide-orgcae9fab">
+<h4 id="orgcae9fab"><span class="section-number-4">9.1.1</span> Uses Android port of SuperCollider</h4>
+</section>
+<section id="slide-orgc4e5b77">
+<h4 id="orgc4e5b77"><span class="section-number-4">9.1.2</span> Uses spatial data to synthesize sound</h4>
+</section>
+</section>
+<section>
+<section id="slide-org7163f5e">
+<h2 id="org7163f5e"><span class="section-number-2">10</span> Game Design for Expressive Mobile Music</h2>
+<div class="outline-text-2" id="text-10">
+</div></section>
+<section id="slide-org2670140">
+<h3 id="org2670140"><span class="section-number-3">10.1</span> Magic Piano: simple, hardcoded music note and pitch</h3>
+</section>
+<section id="slide-orga81eb01">
+<h3 id="orga81eb01"><span class="section-number-3">10.2</span> Magic Fiddle</h3>
+</section>
+<section id="slide-org8987386">
+<h3 id="org8987386"><span class="section-number-3">10.3</span> Ocarina</h3>
+</section>
+<section id="slide-orgaa6082e">
+<h3 id="orgaa6082e"><span class="section-number-3">10.4</span> Leaf Trombone</h3>
+</section>
+</section>
+<section>
+<section id="slide-org45d3b5a">
+<h2 id="org45d3b5a"><span class="section-number-2">11</span> Grab &amp; Play: Creative Mapping</h2>
+<div class="outline-text-2" id="text-11">
+</div></section>
+<section id="slide-orgd4119ec">
+<h3 id="orgd4119ec"><span class="section-number-3">11.1</span> Based on Wekinator with additional features:</h3>
+<div class="outline-text-3" id="text-11-1">
+</div></section>
+<section id="slide-orge33a84c">
+<h4 id="orge33a84c"><span class="section-number-4">11.1.1</span> Interface with any synthesizer that accepts OSC messages</h4>
+</section>
+<section id="slide-orga9ea883">
+<h4 id="orga9ea883"><span class="section-number-4">11.1.2</span> <a href="http://github.com/hugoscurto/GrabAndPlayWeki">Source Code</a></h4>
+</section>
+</section>
+<section>
+<section id="slide-org4660ca3">
+<h2 id="org4660ca3"><span class="section-number-2">12</span> Sound Synthesis: History &amp; Theory</h2>
+<div class="outline-text-2" id="text-12">
+</div></section>
+<section id="slide-org1486948">
+<h3 id="org1486948"><span class="section-number-3">12.1</span> Oscillator = generates waveforms at different pitch</h3>
+<div class="outline-text-3" id="text-12-1">
+</div></section>
+<section id="slide-org3ba5796">
+<h4 id="org3ba5796"><span class="section-number-4">12.1.1</span> Triangle</h4>
+</section>
+<section id="slide-org79c9d12">
+<h4 id="org79c9d12"><span class="section-number-4">12.1.2</span> Saw</h4>
+</section>
+<section id="slide-org6653968">
+<h4 id="org6653968"><span class="section-number-4">12.1.3</span> Square</h4>
+</section>
+<section id="slide-org6675b2d">
+<h4 id="org6675b2d"><span class="section-number-4">12.1.4</span> Pulse</h4>
+</section>
+<section id="slide-orgd85ff2a">
+<h3 id="orgd85ff2a"><span class="section-number-3">12.2</span> Filter = Timbre</h3>
+<div class="outline-text-3" id="text-12-2">
+</div></section>
+<section id="slide-org631f932">
+<h4 id="org631f932"><span class="section-number-4">12.2.1</span> Subtractive synthesis removes some frequencies or emphasis some</h4>
+</section>
+<section id="slide-org7370180">
+<h3 id="org7370180"><span class="section-number-3">12.3</span> Amplifer = Amplitude</h3>
+<div class="outline-text-3" id="text-12-3">
+</div></section>
+<section id="slide-org2a0dacb">
+<h4 id="org2a0dacb"><span class="section-number-4">12.3.1</span> Varying amplitude modify characteristics. marimba and accordion</h4>
+</section>
+<section id="slide-org301a041">
+<h3 id="org301a041"><span class="section-number-3">12.4</span> Low Frequency Oscillator (LFO)</h3>
+<div class="outline-text-3" id="text-12-4">
+</div></section>
+<section id="slide-orgb3a3e17">
+<h4 id="orgb3a3e17"><span class="section-number-4">12.4.1</span> Low sub-audible frequency range where its output use as source of modulation</h4>
+</section>
+<section id="slide-org5991fca">
+<h3 id="org5991fca"><span class="section-number-3">12.5</span> Envelope generator (ASDR)</h3>
+<div class="outline-text-3" id="text-12-5">
+</div></section>
+<section id="slide-org3ad7c65">
+<h4 id="org3ad7c65"><span class="section-number-4">12.5.1</span> modulation source to control synthesizer parameter</h4>
+</section>
+<section id="slide-org39c30df">
+<h4 id="org39c30df"><span class="section-number-4">12.5.2</span> Attack time, Decay Time,  Sustain Level, Release Time</h4>
+</section>
+<section id="slide-org36e1dfa">
+<h4 id="org36e1dfa"><span class="section-number-4">12.5.3</span> Create filter sweep and create volume shape in amplifier to mimic certain instruments</h4>
+</section>
+</section>
+<section>
+<section id="slide-org41a0919">
+<h2 id="org41a0919"><span class="section-number-2">13</span> Electronic Music Synthesis &amp; Audio Effects Processing</h2>
+<div class="outline-text-2" id="text-13">
+</div></section>
+<section id="slide-org69b8b76">
+<h3 id="org69b8b76"><span class="section-number-3">13.1</span> Music notes, pitch and octave</h3>
+<div class="outline-text-3" id="text-13-1">
+</div></section>
+<section id="slide-org8295aef">
+<h4 id="org8295aef"><span class="section-number-4">13.1.1</span> Characterized by fundamental frequency and its ratios = overtones</h4>
+</section>
+<section id="slide-org7037161">
+<h4 id="org7037161"><span class="section-number-4">13.1.2</span> <img src="data/note_frequencies.png" alt="note_frequencies.png" /></h4>
+
+</section>
+<section id="slide-org3d14cfe">
+<h3 id="org3d14cfe"><span class="section-number-3">13.2</span> Timbre &amp; Physical Modelling</h3>
+<div class="outline-text-3" id="text-13-2">
+</div></section>
+<section id="slide-org0317331">
+<h4 id="org0317331"><span class="section-number-4">13.2.1</span> Tone quality. Charateristic quality of a sound often used to discern instruments</h4>
+
+</section>
+<section id="slide-orge145bb0">
+<h4 id="orge145bb0"><span class="section-number-4">13.2.2</span> Frequency Spectrum (relative energy distribution of partials) affect timbre</h4>
+
+</section>
+<section id="slide-orgab8c0f9">
+<h4 id="orgab8c0f9"><span class="section-number-4">13.2.3</span> Variation in amplitude such as attack and fade time also affet timbre</h4>
+
+</section>
+<section id="slide-org35e00bc">
+<h3 id="org35e00bc"><span class="section-number-3">13.3</span> Additive synthesis</h3>
+<div class="outline-text-3" id="text-13-3">
+</div></section>
+<section id="slide-orgc84622e">
+<h4 id="orgc84622e"><span class="section-number-4">13.3.1</span> using sinusoids of different frequency and amplitude ratio</h4>
+
+</section>
+<section id="slide-orgfe3cf24">
+<h3 id="orgfe3cf24"><span class="section-number-3">13.4</span> FM Synthesis</h3>
+
+</section>
+<section id="slide-orgf74bb25">
+<h3 id="orgf74bb25"><span class="section-number-3">13.5</span> Audio Effects</h3>
+<div class="outline-text-3" id="text-13-5">
+</div></section>
+<section id="slide-orgc6a0f92">
+<h4 id="orgc6a0f92"><span class="section-number-4">13.5.1</span> Echo (repeat signal after a delay with reduced gain)</h4>
+
+</section>
+<section id="slide-orgee2394c">
+<h4 id="orgee2394c"><span class="section-number-4">13.5.2</span> Reverb (persistence of sound after being produced due to reflection)</h4>
+
+</section>
+<section id="slide-org3704434">
+<h4 id="org3704434"><span class="section-number-4">13.5.3</span> Flanging</h4>
+
+</section>
+<section id="slide-org39574a0">
+<h4 id="org39574a0"><span class="section-number-4">13.5.4</span> Chorus</h4>
+
+</section>
+<section id="slide-orgf893f1f">
+<h4 id="orgf893f1f"><span class="section-number-4">13.5.5</span> Bass (tone in low-pitched range)</h4>
+
+</section>
+<section id="slide-orgbf48349">
+<h4 id="orgbf48349"><span class="section-number-4">13.5.6</span> Treble (high frequency)</h4>
+
+</section>
+<section id="slide-org8c4a1b0">
+<h4 id="org8c4a1b0"><span class="section-number-4">13.5.7</span> WahWah Effect (altering resonance of musical notes)</h4>
+
+</section>
+<section id="slide-org6462429">
+<h4 id="org6462429"><span class="section-number-4">13.5.8</span> Tremolo (variation of amplitude)</h4>
+
+</section>
+<section id="slide-org3410b7a">
+<h4 id="org3410b7a"><span class="section-number-4">13.5.9</span> Fade In Fade Out</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf256d57">
+<h2 id="orgf256d57"><span class="section-number-2">14</span> Synthesis Techniques</h2>
+<div class="outline-text-2" id="text-14">
+</div></section>
+<section id="slide-org9f424b3">
+<h3 id="org9f424b3"><span class="section-number-3">14.1</span> Additive Synthesis</h3>
+
+</section>
+<section id="slide-org13b63ef">
+<h3 id="org13b63ef"><span class="section-number-3">14.2</span> Source-filter</h3>
+<div class="outline-text-3" id="text-14-2">
+</div></section>
+<section id="slide-org18a80d0">
+<h4 id="org18a80d0"><span class="section-number-4">14.2.1</span> <img src="data/source_filter.png" alt="source_filter.png" /></h4>
+
+
+</section>
+<section id="slide-org08f916f">
+<h4 id="org08f916f"><span class="section-number-4">14.2.2</span> Amplitude Modulation</h4>
+</section>
+<section id="slide-orgbd2c748">
+<h4 id="orgbd2c748"><span class="section-number-4">14.2.3</span> Frequency Modulation</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc5fe67">
+<h2 id="orgdc5fe67"><span class="section-number-2">15</span> Gesture-Sound Mapping by Demonstration in Interactive Music Systems</h2>
+<div class="outline-text-2" id="text-15">
+</div></section>
+<section id="slide-org4cdc626">
+<h3 id="org4cdc626"><span class="section-number-3">15.1</span> Hierarchical Approach to Mapping</h3>
+<div class="outline-text-3" id="text-15-1">
+</div></section>
+<section id="slide-org2927a6c">
+<h4 id="org2927a6c"><span class="section-number-4">15.1.1</span> Template-based learning with single example</h4>
+
+</section>
+<section id="slide-org34f9a85">
+<h3 id="org34f9a85"><span class="section-number-3">15.2</span> Multimodal modelling of gesture-sound mapping</h3>
+<div class="outline-text-3" id="text-15-2">
+</div></section>
+<section id="slide-org2ab35b5">
+<h4 id="org2ab35b5"><span class="section-number-4">15.2.1</span> multimodal HMM modelling dependencies between gesture and sound</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org31ee662">
+<h2 id="org31ee662"><span class="section-number-2">16</span> Machine Learning in Automatic Chord Generation</h2>
+<div class="outline-text-2" id="text-16">
+</div></section>
+<section id="slide-org6714682">
+<h3 id="org6714682"><span class="section-number-3">16.1</span> Related work</h3>
+<div class="outline-text-3" id="text-16-1">
+</div></section>
+<section id="slide-orge5f85be">
+<h4 id="orge5f85be"><span class="section-number-4">16.1.1</span> Simon HMM and 60 chords for interactive product</h4>
+
+</section>
+<section id="slide-org5fac295">
+<h4 id="org5fac295"><span class="section-number-4">16.1.2</span> Paiement uses multilevel graphical model to generate chord progression</h4>
+
+</section>
+<section id="slide-org16bf3c1">
+<h4 id="org16bf3c1"><span class="section-number-4">16.1.3</span> Legaspi uses genetic algorithm</h4>
+
+</section>
+<section id="slide-orgc846a87">
+<h3 id="orgc846a87"><span class="section-number-3">16.2</span> Methodology</h3>
+<div class="outline-text-3" id="text-16-2">
+</div></section>
+<section id="slide-org328b45c">
+<h4 id="org328b45c"><span class="section-number-4">16.2.1</span> Random Forest</h4>
+
+</section>
+<section id="slide-orga34e123">
+<h4 id="orga34e123"><span class="section-number-4">16.2.2</span> HMM</h4>
+
+</section>
+<section id="slide-org0ca8cdb">
+<h3 id="org0ca8cdb"><span class="section-number-3">16.3</span> Aim</h3>
+<div class="outline-text-3" id="text-16-3">
+</div></section>
+<section id="slide-org55f7401">
+<h4 id="org55f7401"><span class="section-number-4">16.3.1</span> Given an a music piece with several measures. Predict chord for each measure</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org3c74aae">
+<h2 id="org3c74aae"><span class="section-number-2">17</span> MUSICAL AUDIO SYNTHESIS USING AUTOENCODING NEURAL NETS</h2>
+<p>
+<a href="https://github.com/woodshop/deepAutoController">Source Code</a>. Learn high-level features from low-level features using Autoencoder
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7cf087c">
+<h2 id="org7cf087c"><span class="section-number-2">18</span> Random ideas</h2>
+<div class="outline-text-2" id="text-18">
+</div></section>
+<section id="slide-orga65ae1e">
+<h3 id="orga65ae1e"><span class="section-number-3">18.1</span> Health</h3>
+
+</section>
+<section id="slide-orgcce57cf">
+<h3 id="orgcce57cf"><span class="section-number-3">18.2</span> Education</h3>
+
+</section>
+<section id="slide-org16927d9">
+<h3 id="org16927d9"><span class="section-number-3">18.3</span> Live interaction during concert</h3>
+
+</section>
+<section id="slide-org3288afc">
+<h3 id="org3288afc"><span class="section-number-3">18.4</span> Game: Multiplayer or Single player</h3>
+
+</section>
+<section id="slide-orga96bc27">
+<h3 id="orga96bc27"><span class="section-number-3">18.5</span> Karaoke-like</h3>
+
+</section>
+<section id="slide-org8ab9311">
+<h3 id="org8ab9311"><span class="section-number-3">18.6</span> Natural sound: animals exploration</h3>
+
+</section>
+<section id="slide-orgc7c88f6">
+<h3 id="orgc7c88f6"><span class="section-number-3">18.7</span> Storytelling</h3>
+
+</section>
+<section id="slide-orge155075">
+<h3 id="orge155075"><span class="section-number-3">18.8</span> Generate new way of playing music</h3>
+
+</section>
+<section id="slide-org55f55a9">
+<h3 id="org55f55a9"><span class="section-number-3">18.9</span> AudioVisual</h3>
+
+</section>
+<section id="slide-org9597ac0">
+<h3 id="org9597ac0"><span class="section-number-3">18.10</span> Voice as instrument</h3>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
