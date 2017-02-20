@@ -521,7 +521,7 @@
 
 <a id="org60cb2a5"></a>
 
-## ![img](data/mapmotiont_timbre.png)
+## ![img](docs/data/mapmotiont_timbre.png)
 
 
 <a id="org762f3d3"></a>
@@ -676,7 +676,13 @@
 
 <a id="orgbd51e6e"></a>
 
-### [Source Code](http://github.com/hugoscurto/GrabAndPlayWeki)
+### [Source Code](http://
+
+
+
+
+
+.com/hugoscurto/GrabAndPlayWeki)
 
 
 <a id="org84b02c9"></a>
@@ -776,7 +782,7 @@
 
 <a id="org0a2d525"></a>
 
-### ![img](data/note_frequencies.png)
+### ![img](docs/data/note_frequencies.png)
 
 
 <a id="org57d3a51"></a>
@@ -881,7 +887,7 @@
 
 <a id="orgd39c8e2"></a>
 
-### ![img](data/source_filter.png)
+### ![img](docs/data/source_filter.png)
 
 
 <a id="orgc9332dc"></a>
