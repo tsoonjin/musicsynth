@@ -1,16 +1,1 @@
 * Ideas
-** Health
-** Education
-** Live interaction during concert
-** Game: Multiplayer or Single player
-*** Sonic Tennis
-** Karaoke-like
-** Natural sound: animals exploration
-** Storytelling
-** Generate new way of playing music
-** AudioVisual
-** Voice as instrument
-** Geo-locative synthesis
-** DJ Controller
-** Dynamic Performance Augmentation
-** Exploring Spotify
