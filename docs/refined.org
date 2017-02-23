@@ -174,3 +174,116 @@ Rely on recorded sample. Lookup and replay in sequence
 *** Tremolo (variation of amplitude)
 
 *** Fade In Fade Out
+* Gesture Control of Music System
+** Type of musical gesture
+*** Sound producing, sound modifying, sound accompanying
+** Mapping
+*** Spatial vs temporal
+*** Direct vs indirect (learned)
+**** HMM, DTW (Dynamic Time Warping) captures temporal profile
+**** Neural Network for static posture
+*** one-to-many (interpolation)
+*** many-to-one convergent mapping
+*** Gesture Follower
+* The Interactive Music Producer
+** Music & Sound Production
+*** Ableton Live, Max for Live, PureData, Max
+*** Composing interactive music (Winkler 1998)
+** Interactive Technologies
+*** user experience and they way music is perceived 
+*** Music and Human-Computer Interaction (Holland 2013)
+** Data Mapping and Manipulation
+*** Interactive Music 3.0(Quay 2012), Making Motion Musical (Bevilacqua), Drummond 2009
+*** Wekinator, Gesture Follower
+*** Dynamic Music Objects (Thalmann 2016) 
+* Automatic Synthesizer Programming
+** Numerical representation of timbre
+*** MFCC
+** Programming subtractive synthesis is easier for human
+** Sound Explorer
+* Interactive Computer Aided Performance
+** Analysis
+*** Onset detection
+*** Analysis-resyntehsis framework (IRCAM suite) and spectral modelling for source separation
+*** Phase Vocoder also for source separation
+*** Tone parameter estimation
+**** articulation estimation
+**** pitch estimation
+**** dynamic estimation
+** Control
+*** [[http://www.ac-psych.org/en/download-pdf/volume/2/issue/2/id/15][KTH Rule System]]
+** Modification & Synthesis
+*** Tempo, dynamic, articulation
+* From gesture to sound
+** Gesture recognition in 3D
+*** Hidden Markov Model
+**** suitable for real-life application
+**** [[articles.ircam.fr/textes/Bevilacqua09b/index.pdf][Continuos real time gesture tracking]] 
+*** GMM
+*** Particle Filtering
+** Data Processing
+*** Dimensionality reduction
+*** Feature extraction: speed, axis velocity, trajectory length, acceleration
+** Conclusion
+*** Timbre: shape of gesture
+*** Pitch: average speed of the performed gesture with a threshold
+*** Volume: defined by how big is the movement
+*** Panning: defined by slope changes
+*** Pulse width: average acceleration of gesture
+*** Enhance mapping to use 3D space to add effect
+*** Indirect temporal mapping can be explored
+*** Sensor fusion
+* Sound Synthesis: History & Theory
+** Oscillator = generates waveforms at different pitch
+*** Triangle
+*** Saw
+*** Square
+*** Pulse
+** Filter = Timbre
+*** Subtractive synthesis removes some frequencies or emphasis some
+** Amplifer = Amplitude
+*** Varying amplitude modify characteristics. marimba and accordion
+** Low Frequency Oscillator (LFO)
+*** Low sub-audible frequency range where its output use as source of modulation
+** Envelope generator (ASDR)
+*** modulation source to control synthesizer parameter
+*** Attack time, Decay Time,  Sustain Level, Release Time
+*** Create filter sweep and create volume shape in amplifier to mimic certain instruments
+* Main Ideas
+** Game
+** Exploration
+** Sonification of data
+** Combine direct and indirect gesture mapping
+** Sensor data
+*** WiFi
+*** Accelerometer
+*** Bluetooth
+*** Battery power
+*** Proximity
+*** Microphone
+*** Camera
+** Interaction with other users and environment
+** Dynamic augmentation
+** Adding effect
+** Generative music
+** Mixing sound
+** Geo-locative sound synthesis
+** Vocaloid
+** Using compass and direction pointing
+* Toolset
+** ChuCK
+** CSound
+** Processing
+** PureData
+** urMus
+** SuperCollider
+** STK C++
+** Wekinator
+** Gesture Follower
+** FluidSynth
+** Essentia
+** TarsonDSP
+** Maximillian
+** Jack
+** Overtone
+** OSC
