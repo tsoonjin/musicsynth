@@ -1,0 +1,176 @@
+* Sound Bounce: Physical Metaphors in Designing Mobile Music Performance
+** From Metaphor To Music
+*** The sound of ball is created using FM synthesis.
+*** Spatial height associated with pitch height
+*** Passing ball cross-fades sound of ball
+** Implementation
+*** Uses OpenSoundControl (OSC) to communicate sensors data between mobile phones
+*** Bounce synth: FM and Wavetable
+*** Aim sound at opponent before starting the duel
+
+* Mmmmm: Multi-modal Mobile Music Mixer
+** Design Considerations
+*** Play two sound tracks simultaneously
+*** Control the gain and allow for cross-fade
+*** Seek to specific point 
+*** Available actions:
+**** Upside-down reverse the song
+**** Pitch and tempo shifting by placing finger over proximity sensor
+** Technical details
+*** Record gesture of several users. Normalize to Y longest edge and scale to fit within a predetermined area
+*** Rolling, tilting, pointing, hammering, sliding
+*** Uses frame differencing to capture ambient tempo
+
+* Interactive Mobile Music Peformance with Digital Compass
+** Systems Design and Implementation 
+*** Determine pointing direction of phone using OSC controller (Kampo app)
+*** Server: written in processing which analyzes the data. Compass data is low-passed to remove noise
+** Actions
+*** Aiming: Different people different role. Some people cause tension.
+*** Distance between performers used to map Interonset interval (IOI)
+*** Scale and pitch of notes controlled by position of performers
+** [[https://www.youtube.com/watch?v=bMcLfVRlJq8][Video]] 
+
+* Do Mobile Phones Dream Of Electronic Orchestras ?
+** Original Repertoire
+*** Mapping accelerometer: up-down -> spectral richness and (left-right) -> fundamental frequency for FM synthesis
+*** Preprogrammed modulation ratios and pitches for selection
+*** Circle map effect
+*** DJ control loopback rate by tilting and changes timbre based on accelerometer
+*** Using it as a diffuser in space
+
+* Ocarina
+
+** Physical interaction design process
+
+*** How many points multi touch allowed ?
+
+*** Uses accelerometer for vibrato (left-right), timbre(front-back)
+
+*** Using ChucK to track amplitude of incoming signal
+
+** Sound synthesis
+
+*** ChucK program consists of amplitude tracker and articulator
+* Smartphone-based Music Conducting
+** Design and Implementation
+*** Enters IP and port to connect to server
+*** Sets a limit to sensor for activation
+*** Server runs of PureData
+* Funky Sole Music and Adaptive Mapping 
+** Movement recognition
+*** Vector quantization into distinct states caliberated from short recording
+*** Ant learning algorithm: Training a pheromone table
+*** Adaptive Mapping
+**** Change according to different section of mapping and different mapping space 
+* Gestroviser: Reactable music collaboration
+** Putting puck on table which act as individual music module
+** Many people can contribute to the same piece through interaction with the modules
+* SenSynth: Mobile Application for Dynamic Sensor to Sound Mapping
+Allow for user to try out different mapping. Make use of sensors for configuration instead of just touch screen
+Does not try to mimic interaction with traditional instrument
+** Implementation
+*** Uses custom synthesis library inspired by CREATE Synthesis Library ([[http://fastlabinc.com/CSL/][CSL]])
+*** Choose sensor and desired control
+*** [[file:data/senSynth_mapping.png]]
+** Interaction
+*** Scanned synthesis source for direct audification of data
+*** Kinetic synthesizer
+**** Accelerometer: Dynamic amplitude variation within summed of acceleration -> cross-fade wavetables
+*** Musical pitch of each source controlled by tilt. Pitch quantizer allow construction of harmonic chord and triad
+** Global Pitch Quantizer
+*** Make it easier to play precise note
+* Mapping motion to timbre: FM Synthesis
+** Mapping:
+*** Pitch recognition = carrier frequency
+*** elevation = modulation ratio
+*** rotation = modulation index
+** Tool
+*** SoundCtrl android app maps reading to elevation and rotation
+* Interactivity for Mobile Music Making
+** Building Mobile Musical Instrument
+*** Visual tracking based
+**** Distance to marker as parameter
+**** Uses optical flow to give additional sensor data
+*** Use accelerometer for rapid and fine movement. Lack of point of reference
+**** Air-drumming
+**** Pitched play
+* Review of sound synthesis and effect processing 
+** Sensors
+*** Microphone: context-aware application. Estimate background noise
+*** Accelerometer
+*** Location acquisition
+**** Indoor localization with WLAN signal up 100m
+**** GPS might be intrusive
+**** Bluetooth range of 10m
+** Physic-based method
+*** Produce sound similar to instruments but compute expensive. [[https://www.ece.uvic.ca/~bctill/papers/numacoust/V%C3%A4lim%C3%A4ki_etal_2006.pdf][Discrete-time modelling of musical instruments]]
+*** Digital waveguide modelling (DWG) for string instrument 
+*** Source-filter model(good candidate for mobile music)
+*** Modal synsthesis specifies vibrational properties in frequency domain suitable for inharmonic sound (good for mobile)
+** Sampling and wavetable synthesis [[http://www.montana.edu/rmaher/publications/maher_jaes_0305_205-213.pdf][Wavetable synthesis for mobile devices]]
+Rely on recorded sample. Lookup and replay in sequence
+*** Uses differential coding to compress data for storage
+*** wavetable cross-fading: plays 2 wavetables simulataneuosly
+*** wavetable stacking: corresponding wavetable mix with envelope function
+*** [[https://pdfs.semanticscholar.org/3871/2d0f05e1904ec8d8eed0a5c872a4146ccf60.pdf][Scanned synthesis]] (related technique): Uses a dynamic wavetablee controlled by gesture
+*** Additive synthesis: summation of sinusoidal component. Can add filtered noise for more complex waveform. But FFT is expensive
+*** Subtractive synthesis: more demanding than general.
+** FM synthesis and other methods
+*** Very efficient. Phase of a sound signal is modulated by a modulator signal
+*** adaptive FM synthesis can be used on any audio signal 
+*** [[https://web.eecs.umich.edu/~gessl/georg_papers/DAFX06-circemap.pdf][Circle Map]]
+** Effects processing 
+*** Chorus, flanging, phasing
+*** Non-linear processing
+**** Dynamic Range Compression (DRC)
+**** Nonlinear-distortion: applying a non-linear function on signal (hyperbolic tangent)
+**** Exciter and enhancer: add mild non-linear to high frequencu contant and equalization. Refer to DAFx
+*** Spatial effect
+**** Sound localization using binaural techniques
+**** Distance and room rendering effect: simulate Doppler effect. [[https://ccrma.stanford.edu/~jos/cfdn/][Feedback Delay Network]] for reverb effect
+** Design of Gestural Control
+*** Movement recognition using Bayesian Network, HMM, FSM
+**** [[http://web.ist.utl.pt/tiago.guerreiro/amc/mnemonics/files/mbs_lncs.pdf][Mnemonical Body Shortcuts]] 
+**** [[https://hal.archives-ouvertes.fr/inria-00103854/document][Two-stage recognition of raw acc for 3D gesture]] 
+**** [[http://www.dcs.gla.ac.uk/~rod/publications/Str07-thesisFinal.pdf][Multimodal, Emobodied Location-aware interaction]]
+**** [[https://web.eecs.umich.edu/~gessl/georg_papers/Permid07.pdf][Design Space of sensing based interaction]]
+**** [[https://pdfs.semanticscholar.org/e3ab/f9dff14ca7c68b1ddeba113f982b512d6519.pdf][Sonic City]]
+* Electronic Music Synthesis & Audio Effects Processing
+** Music notes, pitch and octave
+*** Characterized by fundamental frequency and its ratios = overtones
+*** [[file:data/note_frequencies.png]]
+
+** Timbre & Physical Modelling
+
+*** Tone quality. Charateristic quality of a sound often used to discern instruments
+
+*** Frequency Spectrum (relative energy distribution of partials) affect timbre
+
+*** Variation in amplitude such as attack and fade time also affet timbre
+
+** Additive synthesis
+
+*** using sinusoids of different frequency and amplitude ratio
+
+** FM Synthesis
+
+** Audio Effects
+
+*** Echo (repeat signal after a delay with reduced gain)
+
+*** Reverb (persistence of sound after being produced due to reflection)
+
+*** Flanging 
+
+*** Chorus
+
+*** Bass (tone in low-pitched range)
+
+*** Treble (high frequency)
+
+*** WahWah Effect (altering resonance of musical notes)
+
+*** Tremolo (variation of amplitude)
+
+*** Fade In Fade Out
